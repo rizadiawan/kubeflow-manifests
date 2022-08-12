@@ -2,7 +2,6 @@ bases:
 - ../../base
 patchesStrategicMerge:
 - ingress.yaml
-- oidc.yaml
 generatorOptions:
   disableNameSuffixHash: true
 configMapGenerator:
@@ -10,10 +9,6 @@ configMapGenerator:
   behavior: merge
   envs:
   - params.env
-secretGenerator:
-- name: istio-oidc-secret
-  envs:
-  - secrets.env
 vars:
 - name: certArn
   objref:
@@ -22,32 +17,4 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.certArn
-- name: oidcIssuer
-  objref:
-    kind: ConfigMap
-    name: istio-ingress-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.oidcIssuer
-- name: oidcAuthorizationEndpoint
-  objref:
-    kind: ConfigMap
-    name: istio-ingress-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.oidcAuthorizationEndpoint
-- name: oidcTokenEndpoint
-  objref:
-    kind: ConfigMap
-    name: istio-ingress-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.oidcTokenEndpoint
-- name: oidcUserInfoEndpoint
-  objref:
-    kind: ConfigMap
-    name: istio-ingress-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.oidcUserInfoEndpoint
 namespace: istio-system
