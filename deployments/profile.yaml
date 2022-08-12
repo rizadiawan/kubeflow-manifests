@@ -2,20 +2,9 @@
  kind: Profile
  metadata:
      # replace with the name of profile you want, this will be user's namespace name
-     name: rizputra
+     name: profileName
  spec:
      owner:
          kind: User
          # replace with the email of the user
-         name: rizputra@amazon.com
----
- apiVersion: kubeflow.org/v1beta1
- kind: Profile
- metadata:
-     # replace with the name of profile you want, this will be user's namespace name
-     name: test
- spec:
-     owner:
-         kind: User
-         # replace with the email of the user
-         name: test@mailinator.com
+         name: userid@email.com
